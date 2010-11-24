@@ -1,0 +1,43 @@
+#!/bin/sh
+set -e
+
+IMAGES=/boot/images
+. /usr/lib/grub/grub-mkconfig_lib
+if test -e /boot/memdisk ; then
+	MEMDISKPATH=$( make_system_path_relative_to_its_root "/boot/memdisk" )
+	echo "Found memdisk: $MEMDISKPATH" >&2
+	if [ ! -d "$IMAGES" ]; then
+		echo "Imagepath $IMAGES not found" >&2
+		exit
+	fi
+	find $IMAGES -name "*.iso" -o -name '*.img' | sort | 
+	while read image ; do
+		IMAGEPATH=$( make_system_path_relative_to_its_root "$image" )
+		case "$image" in
+			*.iso)
+				echo "Found iso image: $IMAGEPATH" >&2
+				cat << EOF
+menuentry "Bootable ISO Image: $(basename $IMAGEPATH | sed s/.iso//)" {
+EOF
+				prepare_grub_to_access_device ${GRUB_DEVICE_BOOT} | sed -e "s/^/\t/"
+				cat << EOF
+	linux16 $MEMDISKPATH iso
+	initrd16 $IMAGEPATH
+}
+EOF
+				;;
+			*.img)
+				echo "Found floppy image: $IMAGEPATH" >&2
+				cat << EOF
+menuentry "Bootable Floppy Image: $(basename $IMAGEPATH | sed s/.img//)" {
+EOF
+				prepare_grub_to_access_device ${GRUB_DEVICE_BOOT} | sed -e "s/^/\t/"
+				cat << EOF
+	linux16 $MEMDISKPATH rawimg
+	initrd16 $IMAGEPATH
+}
+EOF
+				;;
+		esac
+	done
+fi

@@ -1,0 +1,13 @@
+Source: grub-imageboot
+Section: admin
+Priority: extra
+Maintainer: Alexander Wirt <alexander.wirt@credativ.de>
+Build-Depends: debhelper (>= 7) 
+Standards-Version: 3.9.1
+
+Package: grub-imageboot
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}, syslinux (>= 4), grub-pc
+Description: boot iso and floppy images with grub2 and syslinux memdisk
+ This package installs a grub hook which integrates iso and floppy images
+ into the grub menu.
