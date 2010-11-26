@@ -1,7 +1,7 @@
 Source: grub-imageboot
 Section: admin
 Priority: extra
-Maintainer: Alexander Wirt <alexander.wirt@credativ.de>
+Maintainer: Alexander Wirt <formorer@formorer.de>
 Build-Depends: debhelper (>= 7) 
 Standards-Version: 3.9.1
 
