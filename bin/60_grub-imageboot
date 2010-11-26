@@ -2,6 +2,12 @@
 set -e
 
 IMAGES=/boot/images
+
+if [ -e "/etc/default/grub-imageboot.conf" ]
+then
+	. /etc/default/grub-imageboot.conf
+fi
+
 . /usr/lib/grub/grub-mkconfig_lib
 if test -e /boot/memdisk ; then
 	MEMDISKPATH=$( make_system_path_relative_to_its_root "/boot/memdisk" )

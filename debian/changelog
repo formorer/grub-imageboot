@@ -1,5 +1,11 @@
+grub-imageboot (0.2) unstable; urgency=low
+
+  * Add support for configfile 
+
+ -- Alexander Wirt <formorer@debian.org>  Fri, 26 Nov 2010 11:33:13 +0100
+
 grub-imageboot (0.1) unstable; urgency=low
 
   * Initial Version
 
- -- Alexander Wirt <alexander.wirt@credativ.de>  Tue, 09 Nov 2010 11:14:15 +0100
+ -- Alexander Wirt <formorer@debian.org>  Tue, 09 Nov 2010 11:14:15 +0100
