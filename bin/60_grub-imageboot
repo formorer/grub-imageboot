@@ -14,7 +14,6 @@ if test -e /boot/memdisk ; then
 	echo "Found memdisk: $MEMDISKPATH" >&2
 	if [ ! -d "$IMAGES" ]; then
 		echo "Imagepath $IMAGES not found" >&2
-		echo "Please copy /usr/lib/syslinux/memdisk to /boot/memdisk" >&2 
 		exit
 	fi
 	find $IMAGES -name "*.iso" -o -name '*.img' | sort | 
@@ -47,4 +46,7 @@ EOF
 				;;
 		esac
 	done
+else 
+	echo "memdisk not found" >&2
+	echo "Please copy /usr/lib/syslinux/memdisk to /boot/memdisk" >&2 
 fi
