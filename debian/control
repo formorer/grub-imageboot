@@ -11,3 +11,6 @@ Depends: ${shlibs:Depends}, ${misc:Depends}, syslinux (>= 4), grub-pc
 Description: boot iso and floppy images with grub2 and syslinux memdisk
  This package installs a grub hook which integrates iso and floppy images
  into the grub menu.
+ . 
+ memdisk can't boot every image see 
+ http://syslinux.zytor.com/wiki/index.php/MEMDISK for its limitations
