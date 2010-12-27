@@ -1,6 +1,7 @@
 grub-imageboot (0.3) unstable; urgency=low
 
   * Drop suffix .conf from configfile
+  * Don't normalize the imagepath in messageoutput
 
  -- Alexander Wirt <formorer@debian.org>  Mon, 27 Dec 2010 17:33:36 +0100
 

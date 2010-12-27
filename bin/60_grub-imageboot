@@ -21,7 +21,7 @@ if test -e /boot/memdisk ; then
 		IMAGEPATH=$( make_system_path_relative_to_its_root "$image" )
 		case "$image" in
 			*.iso)
-				echo "Found iso image: $IMAGEPATH" >&2
+				echo "Found iso image: $image" >&2
 				test -z "$ISOOPTS" && ISOOPTS="iso"
 				cat << EOF
 menuentry "Bootable ISO Image: $(basename $IMAGEPATH | sed s/.iso//)" {
@@ -34,7 +34,7 @@ EOF
 EOF
 				;;
 			*.img)
-				echo "Found floppy image: $IMAGEPATH" >&2
+				echo "Found floppy image: $image" >&2
 				test -z "$IMAGEOPTS" && IMAGEOPTS="rawimg"
 				cat << EOF
 menuentry "Bootable Floppy Image: $(basename $IMAGEPATH | sed s/.img//)" {
