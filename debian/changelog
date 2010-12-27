@@ -1,3 +1,9 @@
+grub-imageboot (0.4) unstable; urgency=low
+
+  * Fix copymessage of memdisk installation 
+
+ -- Alexander Wirt <formorer@debian.org>  Mon, 27 Dec 2010 18:18:36 +0100
+
 grub-imageboot (0.3) unstable; urgency=low
 
   * Drop suffix .conf from configfile
