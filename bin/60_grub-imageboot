@@ -3,9 +3,9 @@ set -e
 
 IMAGES=/boot/images
 
-if [ -e "/etc/default/grub-imageboot.conf" ]
+if [ -e "/etc/default/grub-imageboot" ]
 then
-	. /etc/default/grub-imageboot.conf
+	. /etc/default/grub-imageboot
 fi
 
 . /usr/lib/grub/grub-mkconfig_lib
