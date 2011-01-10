@@ -1,3 +1,9 @@
+grub-imageboot (0.5) unstable; urgency=low
+
+  * Update copyright 
+
+ -- Alexander Wirt <formorer@debian.org>  Mon, 10 Jan 2011 22:40:39 +0100
+
 grub-imageboot (0.4) unstable; urgency=low
 
   * Fix copymessage of memdisk installation 
