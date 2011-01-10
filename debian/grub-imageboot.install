@@ -1,2 +1,2 @@
 bin/60_grub-imageboot etc/grub.d/
-etc/grub-imageboot.conf	etc/default/
+etc/grub-imageboot	etc/default/

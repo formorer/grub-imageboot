@@ -21,7 +21,7 @@ set -e
 case "$1" in
     configure)
 	    if [ ! -e /boot/grub/memdisk ]; then
-		    echo "Copy syslinux memdisk to /boot/grub"
+		    echo "Copy syslinux memdisk to /boot/memdisk"
 		    if [ -e /usr/lib/syslinux/memdisk ]; then
 			    cp /usr/lib/syslinux/memdisk /boot/memdisk
 		    else 
