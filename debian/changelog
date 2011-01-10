@@ -1,6 +1,7 @@
 grub-imageboot (0.5) unstable; urgency=low
 
   * Update copyright 
+  * Depend on syslinux-common instead of syslinux
 
  -- Alexander Wirt <formorer@debian.org>  Mon, 10 Jan 2011 22:40:39 +0100
 
