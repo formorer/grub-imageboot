@@ -45,7 +45,7 @@ if test -e /boot/memdisk ; then
 				cat << EOF
 menuentry "Bootable ISO Image: $(basename $IMAGEPATH | sed s/.iso//)" {
 EOF
-				prepare_grub_to_access_device ${GRUB_DEVICE_BOOT} | sed -e "s/^/\t/"
+				prepare_grub_to_access_device $(${grub_probe} -t device ${image}) | sed -e "s/^/\t/"
 				cat << EOF
 	linux16 $MEMDISKPATH $ISOOPTS
 	initrd16 $IMAGEPATH
@@ -58,7 +58,7 @@ EOF
 				cat << EOF
 menuentry "Bootable Floppy Image: $(basename $IMAGEPATH | sed s/.img//)" {
 EOF
-				prepare_grub_to_access_device ${GRUB_DEVICE_BOOT} | sed -e "s/^/\t/"
+				prepare_grub_to_access_device $(${grub_probe} -t device ${image}) | sed -e "s/^/\t/"
 				cat << EOF
 	linux16 $MEMDISKPATH $IMAGEOPTS
 	initrd16 $IMAGEPATH
