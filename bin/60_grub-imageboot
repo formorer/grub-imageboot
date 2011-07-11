@@ -28,6 +28,25 @@ then
 fi
 
 . /usr/lib/grub/grub-mkconfig_lib
+
+imageboot_add() {
+	local extension="$1"
+	local options="$2"
+	local message_txt="$3"
+	local menu_txt="$4"
+
+	echo "$message_txt: $image" >&2
+	cat << EOF
+menuentry "$menu_txt: $(basename "$IMAGEPATH" | sed -e "s/[.]$extension\$//")" {
+EOF
+	prepare_grub_to_access_device "$($grub_probe -t device "$image")" | sed -e "s/^/\t/"
+	cat << EOF
+	linux16 $MEMDISKPATH $options
+	initrd16 $IMAGEPATH
+}
+EOF
+}
+
 if test -e /boot/memdisk ; then
 	MEMDISKPATH=$( make_system_path_relative_to_its_root "/boot/memdisk" )
 	echo "Found memdisk: $MEMDISKPATH" >&2
@@ -35,35 +54,15 @@ if test -e /boot/memdisk ; then
 		echo "Imagepath $IMAGES not found" >&2
 		exit
 	fi
-	find $IMAGES -name "*.iso" -o -name '*.img' | sort | 
+	find "$IMAGES" -name '*.iso' -o -name '*.img' | sort |
 	while read image ; do
 		IMAGEPATH=$( make_system_path_relative_to_its_root "$image" )
 		case "$image" in
 			*.iso)
-				echo "Found iso image: $image" >&2
-				test -z "$ISOOPTS" && ISOOPTS="iso"
-				cat << EOF
-menuentry "Bootable ISO Image: $(basename $IMAGEPATH | sed s/.iso//)" {
-EOF
-				prepare_grub_to_access_device $(${grub_probe} -t device ${image}) | sed -e "s/^/\t/"
-				cat << EOF
-	linux16 $MEMDISKPATH $ISOOPTS
-	initrd16 $IMAGEPATH
-}
-EOF
+				imageboot_add "iso" "${ISOOPTS:-iso}"      "Found iso image"    "Bootable ISO Image"
 				;;
 			*.img)
-				echo "Found floppy image: $image" >&2
-				test -z "$IMAGEOPTS" && IMAGEOPTS="rawimg"
-				cat << EOF
-menuentry "Bootable Floppy Image: $(basename $IMAGEPATH | sed s/.img//)" {
-EOF
-				prepare_grub_to_access_device $(${grub_probe} -t device ${image}) | sed -e "s/^/\t/"
-				cat << EOF
-	linux16 $MEMDISKPATH $IMAGEOPTS
-	initrd16 $IMAGEPATH
-}
-EOF
+				imageboot_add "img" "${IMAGEOPTS:-rawimg}" "Found floppy image" "Bootable Floppy Image"
 				;;
 		esac
 	done
