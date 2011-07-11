@@ -1,12 +1,16 @@
 grub-imageboot
 --------------
 
-If you want to use this script just place your floppy images (with suffix .img) or 
-you iso files (with suffix.iso) to /boot/images and run update-grub2 afterwards. 
+If you want to use this script just place your floppy images (with
+suffix .img) or you iso files (with suffix.iso) to /boot/images and run
+update-grub2 afterwards.
 
-Booting isos and floppy images with memdisk has limitations - see http://syslinux.zytor.com/wiki/index.php/MEMDISK if you have booting problems. 
+Booting isos and floppy images with memdisk has limitations - see
+http://syslinux.zytor.com/wiki/index.php/MEMDISK if you have booting
+problems.
 
-If you want to change the path were images are dropped adapt $IMAGES in /etc/default/grub-imageboot.conf. 
+If you want to change the path were images are dropped adapt $IMAGES in
+/etc/default/grub-imageboot.conf.
 
-If you need special options to boot your images see $IMAGEOPTS and $ISOOPTS in /etc/default/grub-imageboot.conf.
-
+If you need special options to boot your images see $IMAGEOPTS and
+$ISOOPTS in /etc/default/grub-imageboot.conf.
