@@ -1,4 +1,4 @@
-grub-imageboot (0.6) UNRELEASED; urgency=low
+grub-imageboot (0.6) unstable; urgency=low
 
   [ Michael Prokop ]
   * [2061b1c] Probe device where image is being stored using ${grub_probe}
@@ -14,7 +14,7 @@ grub-imageboot (0.6) UNRELEASED; urgency=low
   * [7ffc35e] Allow grub-efi bootloaders as alternative for grub-pc
   * [b85a107] wrap-and-sort controlfile
 
- -- Alexander Wirt <formorer@debian.org>  Fri, 23 Dec 2011 00:41:34 +0100
+ -- Alexander Wirt <formorer@debian.org>  Fri, 23 Dec 2011 00:53:06 +0100
 
 grub-imageboot (0.5) unstable; urgency=low
 
