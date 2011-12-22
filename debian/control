@@ -7,7 +7,7 @@ Standards-Version: 3.9.1
 
 Package: grub-imageboot
 Architecture: all
-Depends: ${shlibs:Depends}, ${misc:Depends}, syslinux-common (>= 4), grub-pc
+Depends: grub-pc | grub-efi-amd64 | grub-efi-ia32, syslinux-common (>= 4), ${misc:Depends}, ${shlibs:Depends}
 Description: boot iso, harddisk and floppy images with grub2 and syslinux memdisk
  This package installs a grub hook which integrates iso, harddisk and floppy
  images into the grub menu.
