@@ -10,7 +10,7 @@ http://syslinux.zytor.com/wiki/index.php/MEMDISK if you have booting
 problems.
 
 If you want to change the path were images are dropped adapt $IMAGES in
-/etc/default/grub-imageboot.conf.
+/etc/default/grub-imageboot.
 
 If you need special options to boot your images see $IMAGEOPTS and
-$ISOOPTS in /etc/default/grub-imageboot.conf.
+$ISOOPTS in /etc/default/grub-imageboot.
